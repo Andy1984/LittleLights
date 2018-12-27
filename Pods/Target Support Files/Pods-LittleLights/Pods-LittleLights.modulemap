@@ -1,0 +1,6 @@
+module Pods_LittleLights {
+  umbrella header "Pods-LittleLights-umbrella.h"
+
+  export *
+  module * { export * }
+}
