@@ -7,21 +7,21 @@
 //
 
 #import "ViewController.h"
-
-
-
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIView *v = [UIView new];
-    [self.view addSubview:v];
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        [subscriber sendNext:@1];
+        return nil;
+    }];
+    [signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"--%@",x);
+    }];
+    
     
 }
-
-
 @end

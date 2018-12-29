@@ -10,7 +10,7 @@
 #define PrefixHeader_pch
 
 // Include any system framework and library headers here that should be included in all compilation units.
-#import "ReactiveCocoa.h"
+#import "ReactiveObjc.h"
 #import "Masonry.h"
 
 #endif /* PrefixHeader_pch */
