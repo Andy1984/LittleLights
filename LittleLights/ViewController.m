@@ -24,5 +24,9 @@
         NSLog(@"%@ %@",phone, code);
         return @(phone.length == 11 && code.length == 6);
     }];
+    // 仅当手机号11位数字时，获取验证码按钮高亮
+    RAC(self.getSecurityCodeButton, enabled) = [self.phoneTextField.rac_textSignal map:^id _Nullable(NSString * _Nullable value) {
+        return @(value.length == 11);
+    }];
 }
 @end
