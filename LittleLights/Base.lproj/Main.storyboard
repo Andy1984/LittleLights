@@ -33,9 +33,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDb-U5-NWi">
                                 <rect key="frame" x="268" y="128" width="77" height="30"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="77" id="D86-Dd-FCi"/>
                                     <constraint firstAttribute="height" constant="30" id="YAz-QO-FBJ"/>
                                 </constraints>
                                 <state key="normal" title="获取验证码"/>
+                                <connections>
+                                    <action selector="getSecurityButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Mn-dW-EKM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TI7-VR-9c7">
                                 <rect key="frame" x="172" y="188" width="31" height="30"/>
@@ -44,16 +48,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jDb-U5-NWi" firstAttribute="centerY" secondItem="xmJ-fk-0WZ" secondAttribute="centerY" id="0NL-B0-toJ"/>
                             <constraint firstItem="TI7-VR-9c7" firstAttribute="top" secondItem="xmJ-fk-0WZ" secondAttribute="bottom" constant="30" id="5cL-8g-gwy"/>
+                            <constraint firstItem="jDb-U5-NWi" firstAttribute="leading" secondItem="xmJ-fk-0WZ" secondAttribute="trailing" constant="10" id="Gjp-nc-NiS"/>
                             <constraint firstItem="xmJ-fk-0WZ" firstAttribute="top" secondItem="rPK-i5-54G" secondAttribute="bottom" constant="30" id="Ky1-ny-YMM"/>
                             <constraint firstItem="xmJ-fk-0WZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="WPV-Aa-9EJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jDb-U5-NWi" secondAttribute="trailing" constant="30" id="WYE-eS-fyE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rPK-i5-54G" secondAttribute="trailing" constant="30" id="Wn7-KT-9MS"/>
                             <constraint firstItem="rPK-i5-54G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Xtg-Yw-a2K"/>
                             <constraint firstItem="rPK-i5-54G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="k12-0M-yIN"/>
+                            <constraint firstItem="jDb-U5-NWi" firstAttribute="centerY" secondItem="xmJ-fk-0WZ" secondAttribute="centerY" id="mKo-cg-0AF"/>
                             <constraint firstItem="TI7-VR-9c7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pMZ-Gg-bxl"/>
-                            <constraint firstItem="jDb-U5-NWi" firstAttribute="leading" secondItem="xmJ-fk-0WZ" secondAttribute="trailing" constant="10" id="sLM-Ei-b2j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -66,6 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
         </scene>
     </scenes>
 </document>
