@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *getSecurityCodeButton;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (assign, nonatomic) NSInteger countDown;
+@property (strong, nonatomic) NSTimer *securityCodeTimer;
 @end
 
 @implementation ViewController
@@ -21,7 +22,7 @@
     self.countDown = 10;
     [self.getSecurityCodeButton setTitle:[NSString stringWithFormat:@"%ld",self.countDown] forState:UIControlStateDisabled];
     @weakify(self);
-    [NSTimer scheduledTimerWithTimeInterval:1 repeats:true block:^(NSTimer * _Nonnull timer) {
+    self.securityCodeTimer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:true block:^(NSTimer * _Nonnull timer) {
         @strongify(self);
         self.countDown--;
         [self.getSecurityCodeButton setTitle:[NSString stringWithFormat:@"%ld",self.countDown] forState:UIControlStateDisabled];
@@ -40,19 +41,23 @@
     RACSignal *validCodeLength = [self.securityCodeTextField.rac_textSignal map:^id _Nullable(NSString * _Nullable value) {
         return @(value.length == 6);
     }];
-    RACSignal *isCountingDown = [RACObserve(self, countDown) map:^id _Nullable(NSNumber *_Nullable value) {
-        return @(![value isEqualToNumber:@0]);
+    RACSignal *isNotCountingDown = [RACObserve(self, countDown) map:^id _Nullable(NSNumber *_Nullable value) {
+        return @([value isEqualToNumber:@0]);
     }];
     
-    // 仅当手机号11位数字时，获取验证码按钮高亮
-    RAC(self.getSecurityCodeButton, enabled) = [RACSignal combineLatest:@[validPhoneLength, isCountingDown] reduce:^id (NSNumber *validPhoneLength, NSNumber *isCountingDown){
-        return @(validPhoneLength.boolValue && (!isCountingDown.boolValue));
+    // 仅当手机号11位数字时， 且不在倒计时，获取验证码按钮高亮
+    RAC(self.getSecurityCodeButton, enabled) = [RACSignal combineLatest:@[validPhoneLength, isNotCountingDown] reduce:^id (NSNumber *validPhoneLengthValue, NSNumber *isNotCountingDownValue){
+        return @(validPhoneLengthValue.boolValue && isNotCountingDownValue.boolValue);
     }];
     
     // 仅当手机号11位数字、验证码6位数字时，登录按钮高亮
-    RAC(self.loginButton, enabled) = [RACSignal combineLatest:@[validPhoneLength, validCodeLength] reduce:^id (NSNumber *validPhoneLength, NSNumber *validCodeLength){
-        return @(validPhoneLength.boolValue && validCodeLength.boolValue);
+    RAC(self.loginButton, enabled) = [RACSignal combineLatest:@[validPhoneLength, validCodeLength] reduce:^id (NSNumber *validPhoneLengthValue, NSNumber *validCodeLengthValue){
+        return @(validPhoneLengthValue.boolValue && validCodeLengthValue.boolValue);
     }];
-    
+}
+
+- (void)dealloc {
+    //没必要， 但是可以提前销毁
+    [self.securityCodeTimer invalidate];
 }
 @end
