@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <development version="10000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,9 +17,52 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rPK-i5-54G">
+                                <rect key="frame" x="30" y="68" width="315" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xmJ-fk-0WZ">
+                                <rect key="frame" x="30" y="128" width="228" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDb-U5-NWi">
+                                <rect key="frame" x="268" y="128" width="77" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YAz-QO-FBJ"/>
+                                </constraints>
+                                <state key="normal" title="获取验证码"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TI7-VR-9c7">
+                                <rect key="frame" x="172" y="188" width="31" height="30"/>
+                                <state key="normal" title="登陆"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jDb-U5-NWi" firstAttribute="centerY" secondItem="xmJ-fk-0WZ" secondAttribute="centerY" id="0NL-B0-toJ"/>
+                            <constraint firstItem="TI7-VR-9c7" firstAttribute="top" secondItem="xmJ-fk-0WZ" secondAttribute="bottom" constant="30" id="5cL-8g-gwy"/>
+                            <constraint firstItem="xmJ-fk-0WZ" firstAttribute="top" secondItem="rPK-i5-54G" secondAttribute="bottom" constant="30" id="Ky1-ny-YMM"/>
+                            <constraint firstItem="xmJ-fk-0WZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="WPV-Aa-9EJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jDb-U5-NWi" secondAttribute="trailing" constant="30" id="WYE-eS-fyE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rPK-i5-54G" secondAttribute="trailing" constant="30" id="Wn7-KT-9MS"/>
+                            <constraint firstItem="rPK-i5-54G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Xtg-Yw-a2K"/>
+                            <constraint firstItem="rPK-i5-54G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="k12-0M-yIN"/>
+                            <constraint firstItem="TI7-VR-9c7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pMZ-Gg-bxl"/>
+                            <constraint firstItem="jDb-U5-NWi" firstAttribute="leading" secondItem="xmJ-fk-0WZ" secondAttribute="trailing" constant="10" id="sLM-Ei-b2j"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="getSecurityCodeButton" destination="jDb-U5-NWi" id="zsq-OI-ZNJ"/>
+                        <outlet property="loginButton" destination="TI7-VR-9c7" id="D53-bH-fCV"/>
+                        <outlet property="phoneTextField" destination="rPK-i5-54G" id="qdX-bs-wyr"/>
+                        <outlet property="securityCodeTextField" destination="xmJ-fk-0WZ" id="rJm-kJ-POh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
